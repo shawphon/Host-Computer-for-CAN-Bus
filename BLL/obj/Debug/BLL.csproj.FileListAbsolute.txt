@@ -1,0 +1,5 @@
+C:\Users\ASUS\Desktop\HostComputer\BLL\bin\Debug\BLL.dll
+C:\Users\ASUS\Desktop\HostComputer\BLL\bin\Debug\BLL.pdb
+C:\Users\ASUS\Desktop\HostComputer\BLL\obj\Debug\BLL.csprojAssemblyReference.cache
+C:\Users\ASUS\Desktop\HostComputer\BLL\obj\Debug\BLL.dll
+C:\Users\ASUS\Desktop\HostComputer\BLL\obj\Debug\BLL.pdb

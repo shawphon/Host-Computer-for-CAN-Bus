@@ -1,0 +1,5 @@
+C:\Users\ASUS\Desktop\HostComputer\CommonTool\bin\Debug\CommonTool.dll
+C:\Users\ASUS\Desktop\HostComputer\CommonTool\bin\Debug\CommonTool.pdb
+C:\Users\ASUS\Desktop\HostComputer\CommonTool\obj\Debug\CommonTool.csprojAssemblyReference.cache
+C:\Users\ASUS\Desktop\HostComputer\CommonTool\obj\Debug\CommonTool.dll
+C:\Users\ASUS\Desktop\HostComputer\CommonTool\obj\Debug\CommonTool.pdb

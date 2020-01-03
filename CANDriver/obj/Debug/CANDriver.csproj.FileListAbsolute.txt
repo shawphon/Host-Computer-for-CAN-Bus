@@ -1,0 +1,10 @@
+C:\Users\ASUS\source\repos\HostComputer\CANDriver\bin\Debug\CANDriver.dll
+C:\Users\ASUS\source\repos\HostComputer\CANDriver\bin\Debug\CANDriver.pdb
+C:\Users\ASUS\source\repos\HostComputer\CANDriver\obj\Debug\CANDriver.csprojAssemblyReference.cache
+C:\Users\ASUS\source\repos\HostComputer\CANDriver\obj\Debug\CANDriver.dll
+C:\Users\ASUS\source\repos\HostComputer\CANDriver\obj\Debug\CANDriver.pdb
+C:\Users\ASUS\Desktop\HostComputer\CANDriver\bin\Debug\CANDriver.dll
+C:\Users\ASUS\Desktop\HostComputer\CANDriver\bin\Debug\CANDriver.pdb
+C:\Users\ASUS\Desktop\HostComputer\CANDriver\obj\Debug\CANDriver.csprojAssemblyReference.cache
+C:\Users\ASUS\Desktop\HostComputer\CANDriver\obj\Debug\CANDriver.dll
+C:\Users\ASUS\Desktop\HostComputer\CANDriver\obj\Debug\CANDriver.pdb

@@ -1,0 +1,5 @@
+C:\Users\ASUS\Desktop\HostComputer\DAL\bin\Debug\DAL.dll
+C:\Users\ASUS\Desktop\HostComputer\DAL\bin\Debug\DAL.pdb
+C:\Users\ASUS\Desktop\HostComputer\DAL\obj\Debug\DAL.csprojAssemblyReference.cache
+C:\Users\ASUS\Desktop\HostComputer\DAL\obj\Debug\DAL.dll
+C:\Users\ASUS\Desktop\HostComputer\DAL\obj\Debug\DAL.pdb

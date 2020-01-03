@@ -71,6 +71,8 @@ namespace UILayer
         /// <param name="e"></param>
         private void toolStripButton2_Click(object sender, EventArgs e)
         {
+            //表初始化
+            InitalCan0dataTab();
             if (commuForm == null)
             {
                 MessageBox.Show("请先配置设备", "Configuration", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -145,8 +147,36 @@ namespace UILayer
             }
         }
 
+        /// <summary>
+        /// 初始化负载利用率刷新表
+        /// </summary>
+        private void InitalBusLoadTab()
+        {
+            double[] temp = new double[25];
+            //其次删除表中数据
+            string sql = "truncate table Tab_BusLoadFresh";
+            SQLHelper.ExecuteNonQuery(sql);
+
+            for (int i = 0; i < temp.Length; i++)
+            {
+                sql = string.Format("INSERT INTO Tab_BusLoadFresh VALUES('{0}')",
+                    temp[i]);
+                SQLHelper.ExecuteNonQuery(sql);
+            }
+        }
+
+        /// <summary>
+        /// 初始化负载利用率刷新表
+        /// </summary>
+        private void InitalCan0dataTab()
+        {
+            string sql = "truncate table can0data";
+            SQLHelper.ExecuteNonQuery(sql);
+        }
+
         private void toolStripButton6_Click(object sender, EventArgs e)
         {
+            InitalBusLoadTab();
             if (busFlowForm == null)
             {
                 busFlowForm = new BUsFlow();

@@ -17,9 +17,9 @@ namespace UILayer
     public partial class BUsFlow : Form
     {
         #region 变量成员
-        private int periodMessTimeFactor = 1;
+        private double periodMessTimeFactor = 1;
 
-        public int PeriodMessTimeFactor { get => periodMessTimeFactor; set => periodMessTimeFactor = value; }
+        public double PeriodMessTimeFactor { get => periodMessTimeFactor; set => periodMessTimeFactor = value; }
         #endregion
 
         public BUsFlow()
@@ -27,18 +27,24 @@ namespace UILayer
             InitializeComponent();
         }
 
+        #region 成员方法
+        // BUsFlow_Load
+        //BindPointsXY
+        //timer1_Tick
+        //textBox2_KeyPress    用于时基编辑
+
+
         private void BUsFlow_Load(object sender, EventArgs e)
         {
             //textBox2
             textBox2.Text = Convert.ToString(periodMessTimeFactor);
-
             //Chart 绑定数据
             string sql = "select * from Tab_BusLoadFresh";
             DataTable dt = SQLHelper.ExecuteDataTable(sql);
             BindPointsXY(dt, chart1.Series[0].Points);
 
             timer1.Enabled = true;
-            timer1.Interval = 20;
+            timer1.Interval = 200;
             timer1.Start();
         }
 
@@ -79,7 +85,7 @@ namespace UILayer
             //update chart
             BindPointsXY(dt, chart1.Series[0].Points);
 
-            //update textBox2
+            //update textBox1
             textBox1.Text = Convert.ToString(dt.Rows[24][1]);
             dt.Clear();
             dt.Dispose();
@@ -99,20 +105,25 @@ namespace UILayer
                 {
                     try
                     {
-                        periodMessTimeFactor = Convert.ToInt32(textBox2.Text);
+                        periodMessTimeFactor = Convert.ToDouble(textBox2.Text);
                         DAL.DataMonitor.PeriodMessTimeFactor = periodMessTimeFactor;
                     }
                     catch (Exception)
                     {
-                        MessageBox.Show("周期时基应为正整数，并以十进制填写！", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("周期时基应为double型小数，并以十进制填写！", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
             }
             else
             {
-                textBox2.BackColor = Color.Yellow;    
+                textBox2.BackColor = Color.Yellow;
             }
 
         }
+        #endregion
+
+
+
+
     }
 }

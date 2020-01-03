@@ -68,7 +68,7 @@ namespace DAL
             insertFrameSQLTimer.Enabled = true;
 
             this.insertBusLoadSQLTimer = new System.Timers.Timer();
-            insertBusLoadSQLTimer.Interval = 40;
+            insertBusLoadSQLTimer.Interval = 200;
             insertBusLoadSQLTimer.Elapsed += InsertBusLoadSQLTimer_Elapsed;
             insertBusLoadSQLTimer.Enabled = true;
 
@@ -155,16 +155,18 @@ namespace DAL
             else
             {
                 double transBit = 0;
+                double all = 0;
                 for (int i = 0; i < countFrame; i++)
                 {
-                    if (recFrame[i].RemoteFlag == 0)
+                    if (recFrame[i].RemoteFlag == 0 && recFrame[i].DataLen <= 8 && recFrame[i].DataLen > 0)
                     {
                         transBit = 47 + 8 * Convert.ToInt32(recFrame[i].DataLen) +
                             (34 + 8 * Convert.ToInt32(recFrame[i].DataLen)) / 5 + 1;
+                        all += transBit;
                     }
                 }
-                busload = Math.Round(transBit / (baudrate * recTimer.Interval * 10) *
-                    periodMessTimeFactor, 2);//eg . baudrate 500  : 500K
+                busload = Math.Round(all * 100 / (baudrate * recTimer.Interval *
+                    periodMessTimeFactor), 2);//eg . baudrate 500  : 500K
             }
             return busload;
         }
@@ -192,14 +194,16 @@ namespace DAL
             {
                 for (int i = 0; i < countCurrentFrame40; i++)
                 {
-
-                    string data = byteToHexStr(frameStruct[i].Data);
-                    string timestamp = frameStruct[i].TimeStamp.ToString();
-                    string sql = string.Format("INSERT INTO can0data VALUES('{0}','{1}','{2}','{3}', '{4}')",
-                        timestamp, frameStruct[i].ID,  Convert.ToInt16(frameStruct[i].ExternFlag), 
-                        frameStruct[i].DataLen, data);
-                    System.Diagnostics.Debug.WriteLine(data);
-                    SQLHelper.ExecuteNonQuery(sql);
+                    if (frameStruct[i].RemoteFlag == 0 && frameStruct[i].DataLen <= 8 && frameStruct[i].DataLen > 0)
+                    {
+                        string data = byteToHexStr(frameStruct[i].Data);
+                        string timestamp = frameStruct[i].TimeStamp.ToString();
+                        string sql = string.Format("INSERT INTO can0data VALUES('{0}','{1}','{2}','{3}', '{4}')",
+                            timestamp, frameStruct[i].ID, Convert.ToInt16(frameStruct[i].ExternFlag),
+                            frameStruct[i].DataLen, data);
+                        //System.Diagnostics.Debug.WriteLine(data);
+                        SQLHelper.ExecuteNonQuery(sql);
+                    }
                 }
             }
 

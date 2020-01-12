@@ -53,7 +53,7 @@ namespace DAL
             this.baudrate = baudrate;
 
             this.recTimer = new System.Timers.Timer();
-            recTimer.Interval = 40;
+            recTimer.Interval = 200;
             recTimer.Elapsed += RecTimer_Tick;
             recTimer.Enabled = true;
 
@@ -68,7 +68,7 @@ namespace DAL
             insertFrameSQLTimer.Enabled = true;
 
             this.insertBusLoadSQLTimer = new System.Timers.Timer();
-            insertBusLoadSQLTimer.Interval = 200;
+            insertBusLoadSQLTimer.Interval = 40;
             insertBusLoadSQLTimer.Elapsed += InsertBusLoadSQLTimer_Elapsed;
             insertBusLoadSQLTimer.Enabled = true;
 
@@ -165,7 +165,7 @@ namespace DAL
                         all += transBit;
                     }
                 }
-                busload = Math.Round(all * 100 / (baudrate * recTimer.Interval *
+                busload = Math.Round(all * 2000 / (baudrate * recTimer.Interval *
                     periodMessTimeFactor), 2);//eg . baudrate 500  : 500K
             }
             return busload;
